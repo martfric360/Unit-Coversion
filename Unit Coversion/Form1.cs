@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Unit_Coversion
+namespace Unit_Coversion //martin frich
 {
     public partial class Form1 : Form
     {
 
-        double choice, unit, answer; 
-        
-        
+        double choice, unit;
         public Form1()
         {
             InitializeComponent();
@@ -27,47 +25,53 @@ namespace Unit_Coversion
             if (choice == 1)
             {
                 unit = Convert.ToDouble(unitBox.Text);
-                InchesToCm();
+                double answer = InchesToCm(unit);
+                outputLabel.Text = unit + " inches = " + answer.ToString("0.00 cm");
             }
             else if (choice == 2)
             {
                 unit = Convert.ToDouble(unitBox.Text);
-                FeetToCm();
+                double answer = FeetToCm(unit);
+                outputLabel.Text = unit + " Feet = " + answer.ToString("0.00 cm");
             }
             else if (choice == 3)
             {
                 unit = Convert.ToDouble(unitBox.Text);
-                YardsToMetres();
+                double answer = YardsToMetres(unit);
+                outputLabel.Text = unit + " Yard = " + answer.ToString("0.00 Metres");
             }
             else if (choice == 4)
             {
                 unit = Convert.ToDouble(unitBox.Text);
-                MilesToKm();
+                double answer = MilesToKm(unit);
+                outputLabel.Text = unit + " Miles = " + answer.ToString("0.00 Kilometres");
             }
         }
 
-        public void InchesToCm()
+        public double InchesToCm(double cm)
         {
-            answer = unit * 2.54;
-            outputLabel.Text = unit + " inches = " + answer.ToString("0.00 cm"); 
+            double inches = cm * 2.54;
+            return inches;
         }
 
-        public void FeetToCm()
+        public double FeetToCm(double cm)
         {
-            answer = unit * 30.48;
-            outputLabel.Text = unit + " Feet = " + answer.ToString("0.00 cm");
+            double feets = cm * 30.48;
+            return feets;
         }
 
-        public void YardsToMetres()
+        public double YardsToMetres(double metres)
         {
-            answer = unit * 0.91;
-            outputLabel.Text = unit + " Yard = " + answer.ToString("0.00 Metres");
+            double yards = metres * 0.91;
+            return yards;
+            
         }
 
-        public void MilesToKm()
+        public double MilesToKm(double km)
         {
-            answer = unit * 1.6;
-            outputLabel.Text = unit + " Miles = " + answer.ToString("0.00 Kilometres");
+            double miles = km * 1.6;
+            return miles;
+           
         }
 
     }
